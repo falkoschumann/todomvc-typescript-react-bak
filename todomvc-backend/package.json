@@ -18,7 +18,6 @@
     "@typescript-eslint/parser": "^2.10.0",
     "babel-jest": "^24.9.0",
     "eslint": "^6.6.0",
-    "husky": "^4.3.0",
     "jest": "^24.9.0",
     "lint-staged": "^10.4.0",
     "prettier": "^2.1.2",
@@ -31,12 +30,8 @@
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir dist --extensions \".ts,.tsx\" --source-maps inline",
     "lint": "eslint src/**/*.ts",
-    "test": "jest"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "test": "jest",
+    "precommit": "lint-staged"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
