@@ -1,0 +1,32 @@
+{
+  "private": true,
+  "name": "todomvc-contract",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.10.0",
+    "@typescript-eslint/parser": "^2.10.0",
+    "eslint": "^6.6.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
+    "prettier": "^2.1.2",
+    "typescript": "~3.7.2"
+  },
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "lint": "eslint src/**"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ]
+  }
+}
