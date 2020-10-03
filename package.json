@@ -1,7 +1,15 @@
 {
   "private": true,
   "name": "typescript-react-todomvc",
-  "workspaces":[
-    "todomvc-contract"
-  ]
+  "workspaces": [
+    "todomvc-contract",
+    "todomvc-backend"
+  ],
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  },
+  "scripts": {
+    "build": "lerna run build",
+    "test": "lerna run test"
+  }
 }

@@ -1,0 +1,7 @@
+{
+  "packages": [
+    "todomvc-contract",
+    "todomvc-backend"
+  ],
+ "version": "0.1.0"
+}
