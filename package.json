@@ -3,7 +3,8 @@
   "name": "typescript-react-todomvc",
   "workspaces": [
     "todomvc-contract",
-    "todomvc-backend"
+    "todomvc-backend",
+    "todomvc-frontend"
   ],
   "devDependencies": {
     "husky": "^4.3.0",
