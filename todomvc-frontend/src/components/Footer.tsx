@@ -1,35 +1,49 @@
 import React from 'react';
 
+export enum Showing {
+  ALL_TODOS = 'all',
+  ACTIVE_TODOS = 'active',
+  COMPLETED_TODOS = 'completed',
+}
+
 export type FooterProps = Readonly<{
-  itemsLeft?: number;
+  completedCount?: number;
+  nowShowing?: Showing;
+  count?: number;
   onClearCompleted?: () => void;
 }>;
 
-function Footer({ itemsLeft = 0, onClearCompleted }: FooterProps) {
+function Footer({ completedCount = 0, nowShowing = Showing.ALL_TODOS, count = 0, onClearCompleted }: FooterProps) {
+  const clearButton =
+    completedCount > 0 ? (
+      <button className="clear-completed" onClick={onClearCompleted}>
+        Clear completed
+      </button>
+    ) : null;
+
   return (
     <footer className="footer">
-      {/* This should be `0 items left` by default */}
       <span className="todo-count">
-        <strong>{itemsLeft}</strong> item{itemsLeft === 1 ? '' : 's'} left
+        <strong>{count}</strong> item{count === 1 ? '' : 's'} left
       </span>
-      {/* Remove this if you don't implement routing */}
       <ul className="filters">
         <li>
-          <a className="selected" href="#/">
+          <a className={nowShowing === Showing.ALL_TODOS ? 'selected' : undefined} href="#/">
             All
           </a>
         </li>
         <li>
-          <a href="#/active">Active</a>
+          <a href="#/active" className={nowShowing === Showing.ACTIVE_TODOS ? 'selected' : undefined}>
+            Active
+          </a>
         </li>
         <li>
-          <a href="#/completed">Completed</a>
+          <a href="#/completed" className={nowShowing === Showing.COMPLETED_TODOS ? 'selected' : undefined}>
+            Completed
+          </a>
         </li>
       </ul>
-      {/* Hidden if no completed items are left ↓ */}
-      <button className="clear-completed" onClick={onClearCompleted}>
-        Clear completed
-      </button>
+      {clearButton}
     </footer>
   );
 }
